@@ -1,0 +1,19 @@
+# Define a versão do Docker Compose. '3.8' é uma versão moderna e estável.
+version: "3.8"
+
+# Define os serviços (contêineres) que compõem a aplicação.
+services:
+  # Nome do nosso serviço da API.
+  imersao-devops-api:
+    # Instrução para construir a imagem a partir do Dockerfile no diretório atual ('.').
+    build: .
+    # Mapeia a porta 8000 do host para a porta 8000 do contêiner.
+    ports:
+      - "8000:8000"
+    # Monta um volume para persistir os dados do banco de dados.
+    volumes:
+      - db-data:/app
+
+# Declara os volumes que serão gerenciados pelo Docker.
+volumes:
+  db-data:
